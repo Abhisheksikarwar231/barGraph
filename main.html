@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>barGraph</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+    <link rel="stylesheet" href="main.css">
+    <style>
+    #msg{
+            visibility: hidden;
+            min-width: 250px;                
+            text-align: center;
+            border-radius: 2px;
+            padding: 16px;
+            z-index: 1;
+            right: 30%;
+            top:30px;
+            font-size: 17px;
+            margin-right:30px;
+        }
+  
+        #msg.show{
+            visibility: visible;
+            -webkit-animation: fadein 0.5s;
+            animation: fadein 0.5s;
+        }
+  
+        @-webkit-keyframes fadein{
+            from {top:0;opacity: 0;}
+            to{top: 30px;opacity: 1;}
+  
+        }
+  
+        @keyframes fadein{
+            from {top:0;opacity: 0;}
+            to{top: 30px;opacity: 1;}
+  
+        }
+  
+        
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="congo">
+            <form >
+                <div class="form">
+                    <div class="cong"> <h2>Congratulations you log In succeessfully!!</h2></div>
+                    <div class="logout"><a style="color: rgb(143, 48, 127)" href="index.html" style="text-decoration: none">logout</a></div>
+                </div>
+            </form>
+        </div>
+    
+    <div class="select">
+        <h2>Select any 5 number from 5to20</h2>
+        <div class="input">
+            <form id="frm1"  >
+                <input type="number" min="5" max="15" name="no_1" placeholder="1st number" id="no_1" list="defaultNumbers">
+                <input type="number" min="5" max="15" name="no_2" placeholder="2nd number" id="no_2" list="defaultNumbers">
+                <input type="number" min="5" max="15" name="no_3" placeholder="3rd number" id="no_3" list="defaultNumbers">
+                <input type="number" min="5" max="15" name="no_4" placeholder="4th number" id="no_4" list="defaultNumbers">
+                <input type="number" min="5" max="15" name="no_5" placeholder="5th number" id="no_5" list="defaultNumbers">
+                <span class="validity"></span>
+
+                <datalist id="defaultNumbers">
+                <option value="5">
+                <option value="6">
+                <option value="7">
+                <option value="8">
+                <option value="9">
+                <option value="10">
+                <option value="11">
+                <option value="12">
+                <option value="13">
+                <option value="14">
+                <option value="15">    
+                </datalist>
+                
+            </form>
+            <br>
+            <br>
+            <button onclick="myFunction()">Show bar graph</button>
+        </div>
+        
+        <div id="msg" >
+                <canvas id="densityChart" width="600" height="400"></canvas>
+            </div>
+
+                <script>
+                    var densityCanvas = document.getElementById("densityChart");
+
+                    Chart.defaults.global.defaultFontFamily = "Lato";
+                    Chart.defaults.global.defaultFontSize = 18;
+
+
+                    var barChart = new Chart(densityCanvas, {
+                    type: 'bar',
+                    data: {
+                    labels: [5,6,7,8,9,10,11,12,13,14,15],
+                    datasets: [{
+                    label: 'selected numbers ',
+                    data: [0,0,0,0,0,0,0,0,0,0,0],
+                    backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                        ],
+                    borderColor: [
+                    'rgba(255,99,132,1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                        ],
+                    borderWidth: 4,
+                    hoverBorderWidth: 3,
+                    hoverBorderColor: 'black'
+                    }]
+                    }
+                    });
+
+                    var d = [0,0,0,0,0,0,0,0,0,0,0];
+            function myFunction() {
+                    var y;
+                    var x = document.getElementById("frm1");
+                    var i;
+                    for (i = 0; i < x.length ;i++) {
+                        y=x.elements[i].value;
+                        y=y-5;
+                        d[y]++;
+                    }
+
+                    barChart.data.datasets[0].data=d; 
+                    barChart.update();   
+                        var x=document.getElementById("msg");
+                     x.className = "show";
+                    
+                      
+                      };
+            
+                </script>
+        
+    </div>
+</div>
+</body>
+</html>

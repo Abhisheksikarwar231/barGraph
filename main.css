@@ -1,0 +1,55 @@
+body{
+background-color: rgba(247, 0, 255, 0.116);
+background-size: cover;
+
+}
+.main{
+display: flex;
+flex-direction: column;
+}
+
+#no_1{
+    width: 10em;
+}
+#no_2{
+    width: 10em;
+}
+#no_3{
+    width: 10em;
+}
+#no_4{
+    width: 10em;
+}
+#no_5{
+    width: 10em;
+}
+
+
+
+.congo{
+       flex: 2;
+    align-items: top;
+    justify-content: top;
+    height: 10%;
+    background: rgba(44,62,80,0,7);
+    
+}
+.form{
+    display: flex;
+    flex-direction: row;
+}
+.cong{
+    flex: 10;
+    align-items: flex-start;
+    justify-content: flex-start;
+    color: red;
+}
+.logout {
+    flex:1;
+    align-items: baseline;
+    justify-content: flex-end;
+    }
+ 
+.select{
+    flex: 10;
+} 
